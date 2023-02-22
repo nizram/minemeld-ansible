@@ -18,7 +18,7 @@
     chdir: "{{ engine_directory }}/core"
 - name: restart supervisor
   service: name=supervisor state=restarted
-  ignore_errors: yes
+  ignore_errors: true
 - name: start minemeld-engine
   supervisorctl: 
     name=minemeld-engine
