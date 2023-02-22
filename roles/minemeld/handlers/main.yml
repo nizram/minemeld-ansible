@@ -8,12 +8,12 @@
     state: restarted
 - name: stop minemeld-engine
   supervisorctl: 
-    name=minemeld-engine 
-    state=stopped
+    name: minemeld-engine 
+    state: stopped
 - name: stop minemeld-web
   supervisorctl: 
-    name=minemeld-web
-    state=stopped
+    name: minemeld-web
+    state: stopped
 - name: cleanup git repo
   command: git clean -f -d -x
   args:
@@ -23,21 +23,25 @@
   ignore_errors: true
 - name: start minemeld-engine
   supervisorctl: 
-    name=minemeld-engine
-    state=started
+    name: minemeld-engine
+    state: started
 - name: start minemeld-web
   supervisorctl:
-    name=minemeld-web
-    state=started
+    name: minemeld-web
+    state: started
 - name: restart nginx
-  service: name=nginx state=restarted
+  service: 
+    name: nginx
+    state: restarted
 - name: restart redis
-  service: name="{{redis_server_service}}" state=restarted
+  service: 
+    name: "{{redis_server_service}}"
+    state: restarted
 - name: restart minemeld-engine
   supervisorctl:
-    name=minemeld-engine
-    state=restarted
+    name: minemeld-engine
+    state: restarted
 - name: restart minemeld-web
   supervisorctl:
-    name=minemeld-web
-    state=restarted
+    name: minemeld-web
+    state: restarted
