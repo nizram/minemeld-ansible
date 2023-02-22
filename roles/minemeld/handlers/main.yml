@@ -3,7 +3,9 @@
   args:
     chdir: "{{ engine_directory }}/core"
 - name: restart collectd
-  service: name=collectd state=restarted
+  service: 
+    name: collectd
+    state: restarted
 - name: stop minemeld-engine
   supervisorctl: 
     name=minemeld-engine 
